@@ -12,3 +12,5 @@ https://github.com/OpenClassrooms-Student-Center/Sophie-Bluel-website-en/tree/ma
 
 The Project Kanban Board
 https://openclassrooms.notion.site/23b974bda8344ef298243ea95bb5f9e8?v=7bafc9c33f3146ec8f521f759134fe77
+
+Published Link: https://randrahim.github.io/Sophie-Bluel-website-en/
