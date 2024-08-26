@@ -269,3 +269,37 @@ footer nav ul {
   justify-content: flex-end;
   margin: 2em;
 }
+
+#portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+  gap: 10px; /* Add some space between the buttons */
+  margin-bottom: 20px;
+}
+
+.filter-option {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 2px solid #1d6154;
+  background-color: white;
+  color: #1d6154;
+  white-space: nowrap;
+  width: auto;
+}
+
+.filter-option:hover {
+  background-color: #1d6154;
+  color: white; 
+}
