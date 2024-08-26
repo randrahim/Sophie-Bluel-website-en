@@ -1,0 +1,57 @@
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  display: block;
+  margin: 120px auto;
+}
+.login-container h1 {
+  color: #1d6154;
+  margin-bottom: 26px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  text-align: left;
+}
+
+input {
+  padding: 10px;
+  border: 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+button {
+  background-color: #1d6154;
+  color: #fff;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  width: 126px;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.forgot-password {
+  margin-top: 10px;
+  display: block;
+  color: #000;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
