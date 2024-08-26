@@ -18,3 +18,5 @@ Link to see the
 [Swagger documentation ](http://localhost:5678/api-docs/)
 
 To read the documentation, use Chrome or Firefox
+
+Invoke-WebRequest -Uri "http://localhost:5678/api-docs/" -Method Get -Headers @{"Accept"="application/json"}

@@ -25,3 +25,26 @@ app.use('/api/categories', categoriesRoutes);
 app.use('/api/works', worksRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 module.exports = app;
+
+
+// URL of the Swagger JSON file
+const swaggerUrl = 'http://localhost:5678/api-docs/';
+
+// Fetch the Swagger JSON
+fetch(swaggerUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(swaggerData => {
+    // Access specific data from the Swagger JSON
+    console.log(swaggerData);
+    // For example, to get paths
+    const paths = swaggerData.paths;
+    console.log(paths);
+  })
+  .catch(error => {
+    console.error('Error fetching Swagger JSON:', error);
+  });
