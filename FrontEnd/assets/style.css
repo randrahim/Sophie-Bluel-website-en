@@ -303,3 +303,17 @@ footer nav ul {
   background-color: #1d6154;
   color: white; 
 }
+
+.edit-header{
+  display: flex;
+  align-items: center;
+}
+.edit-icon {
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+.edit-icon a {
+  text-decoration: none;
+  font-size: 18px;
+}
