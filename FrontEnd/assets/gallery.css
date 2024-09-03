@@ -1,0 +1,70 @@
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.job-item {
+  width: 120px;
+  text-align: center;
+}
+
+.job-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  max-width: 700px;
+  text-align: center;
+}
+.modal-content .box{
+  border: 1px solid red;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.modal-content .box button,
+.modal-content .box hr {
+  margin: 0px auto;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}

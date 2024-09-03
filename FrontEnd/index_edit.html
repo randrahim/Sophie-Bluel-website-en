@@ -13,6 +13,7 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
     <link rel="stylesheet" href="./assets/login.css" />
+    <link rel="stylesheet" href="./assets/gallery.css" />
   </head>
   <body>
     <header>
@@ -54,7 +55,11 @@
       <section id="portfolio">
        <div class="edit-header">
         <h2>My Projects</h2>
-        <i class="edit-icon"><a href="">✏️ Edit</a></i>
+        <!-- <i class="edit-icon"><a href="">✏️ Edit</a></i> -->
+        <button id="editButton" class="edit-button">Edit</button>
+
+        <!-- Popup Window -->
+
        </div>
         <div class="gallery">
           <figure>
@@ -158,5 +163,28 @@
         </ul>
       </nav>
     </footer>
+    <!-- JavaScript code - Modal structure -->
+    <div id="galleryModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <section class="box">
+          <h2 class="gallery-title">Photo Gallery</h2>
+          <div id="gallery" class="photo-gallery"></div>
+          <hr> 
+          <button>Button</button>
+        </section>
+      </div>
+    </div>
+
+    <!-- <div id="popup" style="display:none;">
+      <h2 class="gallery-title">Photo Gallery</h2>
+      <hr> 
+      <div id="gallery" class="photo-gallery">
+        
+      </div>
+      <button onclick="closePopup()">Close</button>
+  </div> -->
+
+    <script src="script.js"></script>
   </body>
 </html>
