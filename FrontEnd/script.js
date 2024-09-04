@@ -41,7 +41,7 @@ function displayJobsInGallery(jobs) {
 }
 
 function openModal() {
-  const modal = document.getElementById('galleryModal');
+  const modal = document.getElementById('popup');
   modal.style.display = 'block';
 
   // Close the modal when the close button is clicked
