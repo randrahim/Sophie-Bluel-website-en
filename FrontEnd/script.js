@@ -37,8 +37,15 @@ function displayJobsInGallery(jobs) {
       const title = document.createElement('p'); // Create a <p> for the title
       title.textContent = job.title;
 
+      // Create delete button
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'delete-button'; // Class name for styling
+      deleteButton.innerHTML = '&#x1f5d1;'; // 'trash can' character in html entity
+
       jobElement.appendChild(img);
+      jobElement.appendChild(deleteButton); // Append the delete button on top of the image
       jobElement.appendChild(title);
+
       gallery.appendChild(jobElement);
   });
 }
