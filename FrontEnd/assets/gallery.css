@@ -48,6 +48,11 @@
   margin: 0px auto;
 }
 
+section.box {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .close-button {
   color: #aaa;
   float: right;
