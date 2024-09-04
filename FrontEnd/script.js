@@ -1,18 +1,21 @@
 document.getElementById('editButton').addEventListener('click', async () => {
   const jobs = await fetchJobs();
   if (jobs) {
+      // Call displayJobsInGallery(jobs) function from below
       displayJobsInGallery(jobs);
   }
-  openModal();
+  // Call openModel() function to open the popup window
+  openModal();      
 });
 
 async function fetchJobs() {
   try {
-      const response = await fetch('http://localhost:5678/api/works'); // Replace with your actual API endpoint
+      const response = await fetch('http://localhost:5678/api/works'); // Use Swagger API URL
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
-      const jobs = await response.json();
+      //return the jobs when the response is true
+      const jobs = await response.json();       
       return jobs;
   } catch (error) {
       console.error('Failed to fetch jobs:', error);
@@ -21,17 +24,17 @@ async function fetchJobs() {
 
 function displayJobsInGallery(jobs) {
   const gallery = document.getElementById('gallery');
-  gallery.innerHTML = ''; // Clear any existing content
+  gallery.innerHTML = '';      // Clear any existing content
 
   jobs.forEach(job => {
-      const jobElement = document.createElement('div');
-      jobElement.className = 'job-item';
+      const jobElement = document.createElement('div'); // Create a div to contain the images
+      jobElement.className = 'job-item';                // class name for each div
 
       const img = document.createElement('img');
-      img.src = job.imageUrl; // Assuming the job object has an imageUrl property
+      img.src = job.imageUrl;  // Assuming the job object has an imageUrl property
       img.alt = job.title;     // Assuming the job object has a title property
 
-      const title = document.createElement('p');
+      const title = document.createElement('p'); // Create a <p> for the title
       title.textContent = job.title;
 
       jobElement.appendChild(img);
@@ -41,6 +44,7 @@ function displayJobsInGallery(jobs) {
 }
 
 function openModal() {
+  // Call the div with popup id 
   const modal = document.getElementById('popup');
   modal.style.display = 'block';
 
