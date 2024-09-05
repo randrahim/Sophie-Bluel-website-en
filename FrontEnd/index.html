@@ -13,6 +13,7 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
     <link rel="stylesheet" href="./assets/login.css" />
+    <link rel="stylesheet" href="./assets/gallery.css" />
   </head>
   <body>
     <header>
@@ -53,6 +54,9 @@
       </section>
       <section id="portfolio">
         <h2>My Projects</h2>
+        <div class="edit-header">
+          <p id="editButton" class="edit-button">✏️ Edit</p>
+        </div>
         <div class="filter-options">
           <button class="filter-option">All</button>
           <button class="filter-option">Objects</button>
@@ -161,5 +165,17 @@
         </ul>
       </nav>
     </footer>
+    <div id="popup" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <section class="box">
+          <h2 class="gallery-title">Photo Gallery</h2>
+          <div id="gallery" class="photo-gallery"></div>
+          <hr> 
+          <button id="add-a-photo-btn">Add a Photo</button>
+        </section>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

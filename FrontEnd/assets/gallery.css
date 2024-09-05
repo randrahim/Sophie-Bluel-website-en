@@ -7,6 +7,7 @@
 }
 
 .job-item {
+  position: relative;
   width: 120px;
   text-align: center;
 }
@@ -91,6 +92,7 @@ section.box {
 
 /* Delete button styling */
 .delete-button {
+  position: absolute;
   background-color: #000;
   color: white;
   font-size: 20px;
@@ -99,6 +101,8 @@ section.box {
   padding: 1px;
   border-radius: 10px;
   align-items: center;
+  top: 5px;
+  right: 5px;
 }
 
 /* Delete button hover effect */
