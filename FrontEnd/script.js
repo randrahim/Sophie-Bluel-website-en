@@ -8,6 +8,7 @@ document.getElementById('editButton').addEventListener('click', async () => {
   openModal();      
 });
 
+// Fetch works (galleries) from API
 async function fetchJobs() {
   try {
       const response = await fetch('http://localhost:5678/api/works'); // Use Swagger API URL
@@ -48,6 +49,30 @@ function displayJobsInGallery(jobs) {
 
       gallery.appendChild(jobElement);
   });
+}
+
+// Function to add event listeners for filtering
+function addFilterEventListeners(jobs) {
+  const filterButtons = document.querySelectorAll('.filter-option');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const categoryId = button.getAttribute('data-category-id');
+      filterGalleryByCategoryId(jobs, categoryId);  // Filter the gallery based on selected category
+    });
+  });
+}
+
+// Function to filter gallery by categoryId
+function filterGalleryByCategoryId(jobs, categoryId) {
+  const gallery = document.getElementById('gallery');
+  
+  if (categoryId === 'all') {
+    displayJobsInGallery(jobs);  // Show all jobs if 'All' is selected
+  } else {
+    const filteredJobs = jobs.filter(job => job.categoryId == categoryId);
+    displayJobsInGallery(filteredJobs);  // Display only the jobs that match the selected category
+  }
 }
 
 function openModal() {

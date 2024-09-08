@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const filterButtons = document.querySelectorAll('.filter-option');
+
   
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
