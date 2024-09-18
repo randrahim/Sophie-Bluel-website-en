@@ -20,3 +20,10 @@ Link to see the
 To read the documentation, use Chrome or Firefox
 
 Invoke-WebRequest -Uri "http://localhost:5678/api-docs/" -Method Get -Headers @{"Accept"="application/json"}
+
+Invoke-WebRequest -Uri 'http://localhost:5678/api/works/' -Method GET -Headers @{Accept='application/json'}
+curl.exe -X GET 'http://localhost:5678/api/works/1' -H 'accept: application/json'
+
+Invoke-WebRequest -Uri 'http://localhost:5678/api/categories/' -Method GET -Headers @{Accept='application/json'}
+
+Invoke-WebRequest -Uri 'http://localhost:5678/api/users' -Method GET -Headers @{Accept='application/json'}
