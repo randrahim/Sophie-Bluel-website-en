@@ -26,7 +26,7 @@ async function fetchLogin(email, password) {
 }
 
 // Handle the form submission
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
+document.getElementById('loginForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
   const email = document.getElementById('email').value;
@@ -37,7 +37,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     loginErrorElement.style.display = 'none';
     loginErrorElement.textContent = '';
 
-    const loginData = await fetchLogin(email, password);
+    const loginData = fetchLogin(email, password);
     console.log('Login successful:', loginData);
 
     window.location.href = 'index.html'; // Redirect after successful login
