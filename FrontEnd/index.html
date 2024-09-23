@@ -180,9 +180,10 @@
     </div>
 
     <!-- Second modal: Add a Photo Form -->
-    <!-- <div id="addPhotoModal" class="modal" style="display:none;">
+    <div id="addPhotoModal" class="modal" style="display:none;">
       <div class="modal-content">
-        <span class="close-button">&times;</span>
+        <!-- Back Arrow Button -->
+        <span class="back-button">&larr;</span>
         <h2>Add Photo</h2>
         <form id="addPhotoForm">
           <label for="photo">Choose a photo:</label>
@@ -193,48 +194,24 @@
           
           <label for="category">Category</label>
           <select id="category" name="category" required>
+            <!-- Dynamically populate categories if needed -->
             <option value="1">Category 1</option>
             <option value="2">Category 2</option>
           </select>
 
-            <button type="submit">Submit</button>
+          <button type="submit">Confirm</button>
         </form>
       </div>
-    </div> -->
+    </div>
 
-    <!-- Second modal: Add a Photo Form -->
-<div id="addPhotoModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <!-- Back Arrow Button -->
-    <span class="back-button">&larr;</span>
-    <h2>Add Photo</h2>
-    <form id="addPhotoForm">
-      <label for="photo">Choose a photo:</label>
-      <input type="file" id="photo" name="photo" accept="image/*" required>
-      
-      <label for="title">Title</label>
-      <input type="text" id="title" name="title" required>
-      
-      <label for="category">Category</label>
-      <select id="category" name="category" required>
-        <!-- Dynamically populate categories if needed -->
-        <option value="1">Category 1</option>
-        <option value="2">Category 2</option>
-      </select>
-
-      <button type="submit">Confirm</button>
-    </form>
-  </div>
-</div>
-
-<!-- Third modal: Success or Confirmation Window -->
-<div id="thirdModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <h2>Success!</h2>
-    <p>Your photo has been uploaded successfully.</p>
-    <button class="close-button">Close</button>
-  </div>
-</div>
+    <!-- Third modal: Success or Confirmation Window -->
+    <div id="thirdModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h2>Success!</h2>
+        <p>Your photo has been uploaded successfully.</p>
+        <button class="close-button">Close</button>
+      </div>
+    </div>
 
 
     <script src="script.js"></script>
