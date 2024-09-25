@@ -187,17 +187,13 @@
         <h2>Add Photo</h2>
         <form id="addPhotoForm">
           <label for="photo">Choose a photo:</label>
-          <input type="file" id="photo" name="photo" accept="image/*" required>
+          <input type="file" id="photo" name="photo" required>
           
           <label for="title">Title</label>
           <input type="text" id="title" name="title" required>
           
           <label for="category">Category</label>
-          <select id="category" name="category" required>
-            <!-- Dynamically populate categories if needed -->
-            <option value="1">Category 1</option>
-            <option value="2">Category 2</option>
-          </select>
+          <select id="category" name="category" required></select>
 
           <button type="submit">Confirm</button>
         </form>
