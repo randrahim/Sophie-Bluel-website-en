@@ -59,13 +59,13 @@ document.getElementById('addPhotoForm').addEventListener('submit', async functio
       method: 'POST',
       body: formData,
     });
-    console.log(await response.json());
-    console.log('Rand Testing body', formData);
-    console.log('Rand Testing body', response);
+    // console.log(await response.json());
+    console.log('Rand Testing formData', formData);
+    console.log('Rand Testing response', response);
     if (response.ok) {
       // Open the third modal on successful upload
       openThirdModal();
-      console.log('Rand Testing when response is ok');
+      console.log('Rand Testing openThirdModal');
     } else {
       alert('Failed to upload photo. Please check your input and try again.');
       console.log('Rand Testing error after alert');
