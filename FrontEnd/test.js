@@ -48,8 +48,8 @@ function openThirdModal() {
 }
 
 // Event listener to open the first modal (Photo Gallery)
-document.getElementById('editButton').addEventListener('click', async () => {
-  const jobs = await fetchJobs();
+document.getElementById('editButton').addEventListener('click', () => {
+  const jobs = fetchJobs();
   if (jobs) {
       displayJobsInGallery(jobs);
   }
@@ -62,7 +62,7 @@ document.getElementById('add-a-photo-btn').addEventListener('click', () => {
 });
 
 // Event listener for submitting the Add Photo form and opening the third modal
-document.getElementById('addPhotoForm').addEventListener('submit', async function (event) {
+document.getElementById('addPhotoForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
   // Simulate the form submission and upload process
@@ -72,7 +72,7 @@ document.getElementById('addPhotoForm').addEventListener('submit', async functio
   formData.append('category', document.getElementById('category').value);
 
   try {
-    const response = await fetch('http://localhost:5678/api/works', {
+    const response = fetch('http://localhost:5678/api/works', {
       method: 'POST',
       body: formData,
     });
@@ -87,3 +87,75 @@ document.getElementById('addPhotoForm').addEventListener('submit', async functio
     console.error('Error uploading photo:', error);
   }
 });
+
+
+/// Extra
+async function fetchCategories() {
+  try {
+    const url = 'http://localhost:5678/api/categories'; // Adjust this URL to your API endpoint
+    console.log('Fetching categories from:', url);
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to fetch categories');
+    }
+
+    const categories = await response.json();
+    return categories;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    throw error;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const categories = fetchCategories();
+    const categorySelect = document.getElementById('category');
+
+    categories.forEach(category => {
+      const option = document.createElement('option');
+      option.value = category.id; // Assuming category has an 'id' property
+      option.textContent = category.name; // Assuming category has a 'name' property
+      categorySelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Failed to load categories:', error);
+    // Optionally display an error message to the user
+  }
+});
+
+
+async function openSecondModal() {
+  const firstModal = document.getElementById('popup');
+  const secondModal = document.getElementById('addPhotoModal');
+
+  // Hide the first modal and show the second one
+  firstModal.style.display = 'none';
+  secondModal.style.display = 'block';
+
+  // Fetch and populate categories
+  try {
+    const categories = await fetchCategories();
+    const categorySelect = document.getElementById('category');
+    categorySelect.innerHTML = ''; // Clear existing options
+
+    categories.forEach(category => {
+      const option = document.createElement('option');
+      option.value = category.id; // Assuming category has an 'id' property
+      option.textContent = category.name; // Assuming category has a 'name' property
+      categorySelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Failed to load categories:', error);
+    // Optionally display an error message to the user
+  }
+
+  // Handle back button to go back to the first modal
+  document.querySelector('.back-button').onclick = function() {
+    secondModal.style.display = 'none';
+    firstModal.style.display = 'block';
+  };
+}
+
