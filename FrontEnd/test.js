@@ -46,40 +46,50 @@ function openThirdModal() {
 }
 
 // Event listener for submitting the Add Photo form and opening the third modal
-document.getElementById('addPhotoForm').addEventListener('submit', async function (event) {
+document.getElementById('addPhotoForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
-  const formData = new FormData();
-  formData.append('image', document.getElementById('photo').files[0]);
-  formData.append('title', document.getElementById('title').value);
-  formData.append('category', document.getElementById('category').value);
+  // Get form input values
+  const title = document.getElementById('title').value;
+  const categoryId = document.getElementById('category').value;
+  const fileInput = document.getElementById('photo').files[0];
+
+  if (!fileInput) {
+    alert('Please select a photo.');
+    return;
+  }
 
   try {
-    const response = await fetch('http://localhost:5678/api/works', {
+    const formData = new FormData();
+    formData.append('image', fileInput);      // Append the image file
+    formData.append('title', title);          // Append the title
+    formData.append('category', categoryId);  // Append the category ID
+
+    // Replace YOUR_AUTH_TOKEN with the actual token you're using
+    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4';
+
+    const response = fetch('http://localhost:5678/api/works', {
       method: 'POST',
       headers: {
-        'accept': 'application/json',
-        'Authorization': 'Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4',
-        'Content-Type': 'multipart/form-data'
+        'Authorization': token, 
       },
       body: formData,
     });
-    // console.log(await response.json());
-    console.log('Rand Testing formData', formData);
-    console.log('Rand Testing response', response);
+
     if (response.ok) {
-      // Open the third modal on successful upload
+      // Step 2: Open the third modal on successful upload
       openThirdModal();
-      console.log('Rand Testing openThirdModal');
+      console.log('Upload successful!');
     } else {
-      alert('Failed to upload photo. Please check your input and try again.');
-      console.log('Rand Testing error after alert');
+      const errorData = response.json();
+      console.error('Error:', errorData);
+      alert('Failed to upload photo.');
     }
   } catch (error) {
-    console.error('Error uploading photo:', error);
-    alert('An error occurred while uploading the photo. Please try again.');
+    alert('An error occurred while uploading the photo.');
   }
 });
+
 
 // Event listener to open the second modal (Add Photo)
 document.getElementById('add-a-photo-btn').addEventListener('click', () => {
@@ -89,7 +99,7 @@ document.getElementById('add-a-photo-btn').addEventListener('click', () => {
 // Fetch categories from the API
 async function fetchCategories() {
   try {
-    const url = 'http://localhost:5678/api/categories'; // Adjust this URL to your API endpoint
+    const url = 'http://localhost:5678/api/categories';
     const response = await fetch(url);
     if (!response.ok) {
       const errorData = await response.json();
