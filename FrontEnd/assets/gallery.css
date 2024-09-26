@@ -96,11 +96,11 @@ section.box {
   position: absolute;
   background-color: #000;
   color: white;
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
+  font-size: 12px;
+  width: 17px;
+  height: 17px;
   padding: 1px;
-  border-radius: 10px;
+  border-radius: 2px;
   align-items: center;
   top: 5px;
   right: 5px;
