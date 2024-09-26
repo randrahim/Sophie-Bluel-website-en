@@ -34,16 +34,12 @@ function displayJobsInGallery(jobs) {
       img.src = job.imageUrl; // Assuming job has an imageUrl property
       img.alt = job.title; // Assuming job has a title property
 
-      const title = document.createElement('p');
-      title.textContent = job.title;
-
       const deleteButton = document.createElement('button');
       deleteButton.className = 'delete-button';
       deleteButton.innerHTML = '&#x1f5d1;'; // Trash can icon
 
       jobElement.appendChild(img);
       jobElement.appendChild(deleteButton);
-      jobElement.appendChild(title);
       gallery.appendChild(jobElement);
   });
 }
