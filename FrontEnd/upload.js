@@ -66,15 +66,22 @@ document.getElementById('addPhotoForm').addEventListener('submit', function (eve
     formData.append('category', categoryId);  // Append the category ID
 
     // Replace YOUR_AUTH_TOKEN with the actual token you're using
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4';
+    // const token = sessionStorage.getItem('token');
+    // const token = sessionStorage.getItem('token');
 
     const response = fetch('http://localhost:5678/api/works', {
       method: 'POST',
       headers: {
-        'Authorization': token, 
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
       },
-      body: formData,
+      // body: formData,
+      body: JSON.stringify(formData),
     });
+    console.log('Rand Testing response', response);
+    console.log('Rand Testing response', headers);
 
     if (response.ok) {
       // Step 2: Open the third modal on successful upload
