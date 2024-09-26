@@ -82,12 +82,6 @@ function openModal(modalId) {
 
 // Event listener to open the second modal (Add Photo)
 document.getElementById('add-a-photo-btn').addEventListener('click', async () => {
-  await openSecondModal();
-});
-
-// Open the second modal (Add Photo) and fetch categories
-// Event listener to open the second modal (Add Photo)
-document.getElementById('add-a-photo-btn').addEventListener('click', async () => {
   document.getElementById('popup').style.display = 'none'; // Hide the first modal
   await openSecondModal(); // Open the second modal
 });
@@ -118,6 +112,11 @@ async function openSecondModal() {
       document.getElementById('popup').style.display = 'block'; // Show the first modal again
   };
 }
+
+ // Add the code for the close button on the top-right corner of the second modal
+ document.querySelector('#addPhotoModal .close-button').addEventListener('click', () => {
+  document.getElementById('addPhotoModal').style.display = 'none'; // Hide the second modal
+});
 
 // Event listener for submitting the Add Photo form
 document.getElementById('addPhotoForm').addEventListener('submit', async (event) => {
