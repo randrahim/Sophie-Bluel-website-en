@@ -86,8 +86,15 @@ document.getElementById('add-a-photo-btn').addEventListener('click', async () =>
 });
 
 // Open the second modal (Add Photo) and fetch categories
+// Event listener to open the second modal (Add Photo)
+document.getElementById('add-a-photo-btn').addEventListener('click', async () => {
+  document.getElementById('popup').style.display = 'none'; // Hide the first modal
+  await openSecondModal(); // Open the second modal
+});
+
+// Open the second modal (Add Photo) and fetch categories
 async function openSecondModal() {
-  openModal('addPhotoModal');
+  openModal('addPhotoModal'); // Open the second modal
 
   try {
       const categories = await fetchCategories();
@@ -105,7 +112,11 @@ async function openSecondModal() {
       alert('Could not load categories. Please try again later.');
   }
 
-  document.querySelector('.back-button').onclick = () => document.getElementById('addPhotoModal').style.display = 'none';
+  // Handle back button event to return to the first modal
+  document.querySelector('.back-button').onclick = () => {
+      document.getElementById('addPhotoModal').style.display = 'none';
+      document.getElementById('popup').style.display = 'block'; // Show the first modal again
+  };
 }
 
 // Event listener for submitting the Add Photo form
