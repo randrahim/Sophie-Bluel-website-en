@@ -159,6 +159,18 @@ document.getElementById('addPhotoForm').addEventListener('submit', async (event)
   }
 });
 
+// Function to preview the uploaded image
+function showPreview(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          document.getElementById('photoPreview').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  }
+}
+
 // Open the third modal (Confirmation or Success Modal)
 function openThirdModal() {
   openModal('thirdModal');
