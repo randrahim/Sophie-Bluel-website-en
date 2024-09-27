@@ -147,7 +147,6 @@ document.getElementById('addPhotoForm').addEventListener('submit', async (event)
 
       if (response.ok) {
           alert('Work uploaded successfully!');
-          openThirdModal(); // Open success modal upon successful upload
       } else if (response.status === 401) {
           alert('Unauthorized. Please login again.');
       } else {
