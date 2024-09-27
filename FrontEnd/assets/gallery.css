@@ -109,3 +109,7 @@ section.box {
 .delete-button:hover {
   background-color: #e60000;
 }
+
+#addPhotoForm {
+  margin: 30px;
+}
