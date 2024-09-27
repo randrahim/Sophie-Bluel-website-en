@@ -34,31 +34,33 @@ async function fetchLogin(email, password) {
 }
 
 // Handle the form submission
-document.getElementById('loginForm').addEventListener('submit', function(event) {
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
   event.preventDefault();
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const loginErrorElement = document.getElementById('loginError');
 
-  console.log('Rand Testing email', email)
-  console.log('Rand Testing password', password)
-  console.log('Rand Testing loginErrorElement', loginErrorElement)
+  console.log('Rand Testing email before', email)
+  console.log('Rand Testing password before', password)
 
   try {
     loginErrorElement.style.display = 'none';
     loginErrorElement.textContent = '';
 
-    const loginData = fetchLogin(email, password);
+    const loginData = await fetchLogin(email, password);
     console.log('Login successful:', loginData);
 
-    // After successful login, show edit section and hide filter options
-    document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
-    document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
+    console.log('Rand Testing email after', email)
+    console.log('Rand Testing password after', password)
 
-    // Redirect after successful login
-    window.location.href = 'index.html';
-    
+    // After successful login, show edit section and hide filter options
+    // document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
+    // document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
+
+    // Optionally, redirect after a short delay
+    // window.location.href = 'index.html'; // Uncomment if redirect is needed
+
   } catch (error) {
     loginErrorElement.textContent = error.message;
     loginErrorElement.style.display = 'block';
