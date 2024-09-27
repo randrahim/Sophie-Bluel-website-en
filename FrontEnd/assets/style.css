@@ -378,8 +378,8 @@ footer nav ul {
 }
 
 .add-photo-preview {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -390,8 +390,8 @@ footer nav ul {
 }
 
 .add-photo-preview img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
 }
 
