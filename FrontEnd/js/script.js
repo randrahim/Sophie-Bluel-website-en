@@ -174,12 +174,6 @@ function showPreview(event) {
   }
 }
 
-
-// Open the third modal (Confirmation or Success Modal)
-function openThirdModal() {
-  openModal('thirdModal');
-}
-
 // Fetch categories from the API
 async function fetchCategories() {
   try {
