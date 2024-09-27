@@ -21,11 +21,10 @@ async function fetchLogin(email, password) {
     console.log('Rand Testing response', response)
 
     const data = await response.json();
-    console.log('Rand Testing data', data)
+    console.log('Rand Testing Login data', data)
 
     // Store the token in sessionStorage
-    const x = sessionStorage.setItem('token', data.token);  // Assuming the token is in `data.token`
-    console.log('Rand Testing x', x)
+    sessionStorage.setItem('token', data.token); // Assuming the token is in `data.token`
 
     return data;
   } catch (error) {
@@ -53,7 +52,13 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const loginData = fetchLogin(email, password);
     console.log('Login successful:', loginData);
 
-    // window.location.href = 'index.html'; // Redirect after successful login
+    // After successful login, show edit section and hide filter options
+    document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
+    document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
+
+    // Redirect after successful login
+    window.location.href = 'index.html';
+    
   } catch (error) {
     loginErrorElement.textContent = error.message;
     loginErrorElement.style.display = 'block';

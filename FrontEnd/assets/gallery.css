@@ -83,6 +83,7 @@ section.box {
   display: inline-block;
   margin-bottom: 30px;
   margin-left: 20px;
+  display: none;
 }
 
 #add-a-photo-btn {
