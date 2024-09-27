@@ -159,17 +159,21 @@ document.getElementById('addPhotoForm').addEventListener('submit', async (event)
   }
 });
 
-// Function to preview the uploaded image
 function showPreview(event) {
   const file = event.target.files[0];
   if (file) {
       const reader = new FileReader();
       reader.onload = function(e) {
           document.getElementById('photoPreview').src = e.target.result;
+
+          // Hide the text elements when an image is selected
+          document.querySelector('.add-photo-label button').style.display = 'none';
+          document.querySelector('.add-photo-label span').style.display = 'none';
       };
       reader.readAsDataURL(file);
   }
 }
+
 
 // Open the third modal (Confirmation or Success Modal)
 function openThirdModal() {

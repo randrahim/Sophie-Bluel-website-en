@@ -179,39 +179,40 @@
       </div>
     </div>
 
-    <!-- Second modal: Add a Photo Form -->
-    <div id="addPhotoModal" class="modal" style="display:none;">
-      <div class="modal-content">
-        <!-- Close Button in the top-right corner -->
-        <span class="close-button">&times;</span>
+   <!-- Second modal: Add a Photo Form -->
+<div id="addPhotoModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <!-- Close Button in the top-right corner -->
+    <span class="close-button">&times;</span>
 
-        <!-- Back Arrow Button -->
-        <span class="back-button">&larr;</span>
-        <h2>Add Photo</h2>
-        
-        <form id="addPhotoForm">
-          <div class="add-photo-container">
-            <label for="photo" class="add-photo-label">
-              <div class="add-photo-preview">
-                <img id="photoPreview" src="placeholder.png" alt="Photo Preview" />
-              </div>
-              <p>+ Add photo</p>
-              <span>Jpg, png: max 4 MB</span>
-            </label>
-            <input type="file" id="photo" name="photo" required style="display: none;" onchange="showPreview(event)">
+    <!-- Back Arrow Button -->
+    <span class="back-button">&larr;</span>
+    <h2>Add Photo</h2>
+    
+    <form id="addPhotoForm">
+      <div class="add-photo-container">
+        <label for="photo" class="add-photo-label">
+          <div class="add-photo-preview">
+            <img id="photoPreview" src="assets/images/thumbnail.png" alt="Photo Preview" />
           </div>
-          
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required>
-          
-          <label for="category">Category</label>
-          <select id="category" name="category" required></select>
-          
-          <hr> 
-          <button type="submit">Confirm</button>
-        </form>
+          <button class="grey-btn">+ Add photo</button> <!-- This will be hidden once an image is uploaded -->
+          <span>Jpg, png: max 4 MB</span> <!-- This will also be hidden -->
+        </label>
+        <input type="file" id="photo" name="photo" required style="display: none;" onchange="showPreview(event)">
       </div>
-    </div>
+      
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required>
+      
+      <label for="category">Category</label>
+      <select id="category" name="category" required></select>
+      
+      <hr> 
+      <button type="submit">Confirm</button>
+    </form>
+  </div>
+</div>
+
 
     <!-- Third modal: Success or Confirmation Window -->
     <div id="thirdModal" class="modal" style="display:none;">

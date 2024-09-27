@@ -390,8 +390,8 @@ footer nav ul {
 }
 
 .add-photo-preview img {
-  /* width: 100px;
-  height: 100px; */
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 
@@ -405,3 +405,8 @@ footer nav ul {
   color: #7b8a95;
 }
 
+.grey-btn {
+  background-color: lightgrey;
+  color: rgb(25, 112, 141);
+  margin-bottom: 10px;
+}
