@@ -83,6 +83,9 @@ section.box {
   display: inline-block;
   margin-bottom: 30px;
   margin-left: 20px;
+}
+
+#edit-header {
   display: none;
 }
 
