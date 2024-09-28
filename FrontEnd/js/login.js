@@ -63,6 +63,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     
     // console.log('Rand Testing email after login', email)
     // console.log('Rand Testing password after login', password)
+
+    // After successful login, show edit section and hide filter options
+    document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
+    document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
     
     window.location.href = 'index.html'; // Redirect after successful login
 
