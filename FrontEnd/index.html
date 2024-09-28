@@ -22,14 +22,15 @@
         <ul>
           <li><a href="index.html">projects</a></li>
           <li><a href="#">contact</a></li>
-          <li><a href="login.html">login</a></li>
-          <li><a href="index.html">logout</a></li>
+          <li><a href="login.html" class="login">login</a></li>
+          <li><a href="index.html" class="logout">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
     </header>
 
     <main>
+      <!-- Introduction Section -->
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="sophie-bluel" />
@@ -53,17 +54,24 @@
           </p>
         </article>
       </section>
+
       <section id="portfolio">
         <h2>My Projects</h2>
+
+        <!-- Edit Section -->
         <div id="edit-header">
           <p id="editButton" class="edit-button">✏️ Edit</p>
         </div>
+        
+        <!-- Filter Section -->
         <div id="filter-options">
           <button class="filter-option" data-category-id="all">All</button>
           <button class="filter-option" data-category-id="1">Objects</button>
           <button class="filter-option" data-category-id="2">Apartments</button>
           <button class="filter-option" data-category-id="3">Hotels & restaurants</button>
         </div>
+
+        <!-- Gallery Section -->
         <div class="gallery">
           <figure data-category-id="1">
             <img
@@ -144,6 +152,8 @@
           </figure>
         </div>
       </section>
+
+      <!-- Contact Section -->
       <section id="contact">
         <h2>Contact</h2>
         <p>Do you have a project in mind? Let’s talk about it!</p>
@@ -159,6 +169,7 @@
       </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
       <nav>
         <ul>
