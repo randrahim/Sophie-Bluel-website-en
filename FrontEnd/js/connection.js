@@ -30,4 +30,4 @@ async function loginUser(email, password) {
 }
 
 // Export the functions to use them in other files
-export { loginUser };
+// export { loginUser };

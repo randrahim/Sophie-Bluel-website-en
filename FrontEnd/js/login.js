@@ -1,10 +1,5 @@
 // Fetch login info from the API
 async function fetchLogin(email, password) {
-  // const token = sessionStorage.getItem('token');
-
-  // const email = 'sophie.bluel@test.tld';
-  // const password = 'S0phie';
-
   try {
     const url = 'http://localhost:5678/api/users/login';
 
@@ -12,22 +7,16 @@ async function fetchLogin(email, password) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': `Bearer ${token}` // Add Authorization header
       },
       body: JSON.stringify({ email, password }),
     });
 
-    // console.log('Rand Testing fetchLogin email', email)
-    // console.log('Rand Testing fetchLogin password', password)
-
     if (!response.ok) {
       const errorData = await response.json();
-      // console.log('Rand Testing errorData', errorData)
       throw new Error(errorData.message || 'Invalid login credentials');
     }
 
     const data = await response.json();
-    // console.log('Rand Testing Login data', data);
 
     // Store the token in sessionStorage
     sessionStorage.setItem('token', data.token); // Assuming the token is in `data.token`
@@ -47,9 +36,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
   const password = document.getElementById('password').value;
   const loginErrorElement = document.getElementById('loginError');
 
-  // console.log('Rand Testing addEventListener email', email)
-  // console.log('Rand Testing addEventListener password', password)
-
   try {
     loginErrorElement.style.display = 'none';
     loginErrorElement.textContent = '';
@@ -60,15 +46,13 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     // Store the token in sessionStorage
     sessionStorage.setItem('token', loginData.token);
-    
-    // console.log('Rand Testing email after login', email)
-    // console.log('Rand Testing password after login', password)
 
     // After successful login, show edit section and hide filter options
-    document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
-    document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
+    // document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
+    // document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
     
-    window.location.href = 'index.html'; // Redirect after successful login
+    // window.location.href = 'index.html'; // Redirect after successful login
+    window.location.href = 'contact.html'; // Redirect after successful login
 
   } catch (error) {
     loginErrorElement.textContent = error.message;
