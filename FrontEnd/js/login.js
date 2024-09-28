@@ -51,8 +51,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     // document.querySelector('.edit-header').style.display = 'block';  // Show Edit Section
     // document.querySelector('.filter-options').style.display = 'none'; // Hide Filter Section
     
-    // window.location.href = 'index.html'; // Redirect after successful login
-    window.location.href = 'contact.html'; // Redirect after successful login
+    window.location.href = 'index.html'; // Redirect after successful login
+    // window.location.href = 'contact.html'; // Redirect after successful login
 
   } catch (error) {
     loginErrorElement.textContent = error.message;
