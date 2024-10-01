@@ -38,6 +38,7 @@ async function loginUser(email, password) {
 function updateUIOnLoginState() {
     const loginLink = document.querySelector('.login');
     const logoutLink = document.querySelector('.logout');
+    const filterOptions = document.querySelector('.filter-options');
     const editLink = document.querySelector('.edit-header'); // Optional: Handle edit link visibility
 
     const isConnected = sessionStorage.getItem('isConnected');
@@ -45,10 +46,12 @@ function updateUIOnLoginState() {
     if (isConnected === 'true') {
         if (loginLink) loginLink.style.display = 'none'; // Hide the login link when logged in
         if (logoutLink) logoutLink.style.display = 'block'; // Show the logout link
+        if (filterOptions) filterOptions.style.display = 'none'; // Hide the filter options
         if (editLink) editLink.style.display = 'inline-block'; // Show edit link if needed
     } else {
         if (loginLink) loginLink.style.display = 'block'; // Show the login link when not logged in
         if (logoutLink) logoutLink.style.display = 'none'; // Hide the logout link
+        if (filterOptions) filterOptions.style.display = 'block'; // Show the filter options
         if (editLink) editLink.style.display = 'none'; // Hide edit link if not logged in
     }
 }
