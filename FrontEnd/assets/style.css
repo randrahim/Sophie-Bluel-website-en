@@ -313,7 +313,7 @@ footer nav ul {
 }
 
 .edit-header{
-  display: flex;
+  display: none;
   align-items: center;
 }
 .edit-icon {

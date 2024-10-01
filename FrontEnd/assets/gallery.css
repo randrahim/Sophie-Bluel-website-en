@@ -85,10 +85,6 @@ section.box {
   margin-left: 20px;
 }
 
-#edit-header {
-  display: none;
-}
-
 #add-a-photo-btn {
   padding: 10px;
   margin-top: 20px;
@@ -116,4 +112,8 @@ section.box {
 
 #addPhotoForm {
   margin: 30px;
+}
+
+#logged{
+  display: none;
 }

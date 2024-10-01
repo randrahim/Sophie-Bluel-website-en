@@ -1,5 +1,3 @@
-// swaggerClient.js
-
 // Base URL for the Swagger API
 const API_BASE_URL = 'http://localhost:5678/api';
 
@@ -18,18 +16,21 @@ async function loginUser(email, password) {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Invalid credentials');
         }
 
         const data = await response.json();
-        // Assuming the response contains a token or some indication of a successful login
-        sessionStorage.setItem('isConnected', 'true'); // Store login state
-        updateUIOnLoginState(); // Update the UI after successful login
+        // Store login state
+        sessionStorage.setItem('isConnected', 'true'); // Store that the user is logged in
+        window.location.href = 'index.html'; // Redirect to the home page after successful login
 
         return data;
     } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
-        throw error;
+        console.error('Error with fetch operation:', error);
+        const loginError = document.getElementById('loginError');
+        if (loginError) {
+            loginError.style.display = 'block'; // Show error message
+        }
     }
 }
 
@@ -37,23 +38,18 @@ async function loginUser(email, password) {
 function updateUIOnLoginState() {
     const loginLink = document.querySelector('.login');
     const logoutLink = document.querySelector('.logout');
-    const categories = document.querySelector('.categories');
-    // const logoModifier = document.querySelector('.logo-modifier');
-    const editionMod = document.querySelector('#logged');
+    const editLink = document.querySelector('.edit-header'); // Optional: Handle edit link visibility
 
     const isConnected = sessionStorage.getItem('isConnected');
 
     if (isConnected === 'true') {
-        loginLink.style.display = 'none';
-        logoutLink.style.display = 'block';
-        categories.style.display = 'none';
-        // logoModifier.style.display = 'block';
-        editionMod.style.display = 'flex';
+        if (loginLink) loginLink.style.display = 'none'; // Hide the login link when logged in
+        if (logoutLink) logoutLink.style.display = 'block'; // Show the logout link
+        if (editLink) editLink.style.display = 'inline-block'; // Show edit link if needed
     } else {
-        loginLink.style.display = 'block';
-        logoutLink.style.display = 'none';
-        // logoModifier.style.display = 'none';
-        editionMod.style.display = 'none';
+        if (loginLink) loginLink.style.display = 'block'; // Show the login link when not logged in
+        if (logoutLink) logoutLink.style.display = 'none'; // Hide the logout link
+        if (editLink) editLink.style.display = 'none'; // Hide edit link if not logged in
     }
 }
 
@@ -63,18 +59,30 @@ function setupLogoutListener() {
     if (logoutLink) {
         logoutLink.addEventListener('click', function (e) {
             e.preventDefault();
-            sessionStorage.removeItem('isConnected');
+            sessionStorage.removeItem('isConnected'); // Remove the login state
             updateUIOnLoginState(); // Update UI after logout
-            window.location.replace('index.html');
+            window.location.replace('index.html'); // Redirect to the homepage
         });
     }
 }
 
-// Set up event listeners and initialize UI on DOM load
+// Event listener for login form submission on login.html
 document.addEventListener('DOMContentLoaded', function () {
-    updateUIOnLoginState(); // Update UI on page load based on login state
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Get email and password from the form
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Attempt to log in
+            loginUser(email, password);
+        });
+    }
+
+    // Initialize UI on page load based on login state
+    updateUIOnLoginState();
     setupLogoutListener(); // Set up the logout listener
 });
-
-// Export the functions to use them in other files
-export { loginUser };
