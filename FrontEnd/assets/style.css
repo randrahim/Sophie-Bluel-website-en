@@ -206,6 +206,7 @@ nav li a {
 
 #introduction p {
   margin-bottom: 0.5em;
+  line-height: 24px;
 }
 #portfolio h2 {
   text-align: center;
