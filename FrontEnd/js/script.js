@@ -52,37 +52,6 @@ function displayJobsInGallery(jobs) {
   });
 }
 
-// Function to delete a job
-async function deleteJob(jobId) {
-    const token = sessionStorage.getItem('token'); // Get the token for authentication
-  
-    if (!token) {
-      alert('You are not logged in.');
-      return;
-    }
-  
-    try {
-      const response = await fetch(`http://localhost:5678/api/works/${jobId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-  
-      if (response.ok) {
-        alert('Job deleted successfully!');
-      } else if (response.status === 401) {
-        alert('Unauthorized. Please login again.');
-      } else {
-        alert('Failed to delete job.');
-      }
-    } catch (error) {
-      console.error('Error deleting job:', error);
-      alert('An error occurred while deleting the job.');
-    }
-  }
-
 // Add event listeners for filtering
 function addFilterEventListeners(jobs) {
   document.querySelectorAll('.filter-option').forEach(button => {
@@ -149,52 +118,8 @@ async function openSecondModal() {
 }
 
  // Add the code for the close button on the top-right corner of the second modal
- document.querySelector('#addPhotoModal .close-button').addEventListener('click', () => {
+  document.querySelector('#addPhotoModal .close-button').addEventListener('click', () => {
   document.getElementById('addPhotoModal').style.display = 'none'; // Hide the second modal
-});
-
-// Event listener for submitting the Add Photo form
-document.getElementById('addPhotoForm').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  
-  const token = sessionStorage.getItem('token');
-  if (!token) {
-      alert('You are not logged in.');
-      return;
-  }
-
-  const title = document.getElementById('title').value;
-  const categoryId = document.getElementById('category').value;
-  const fileInput = document.getElementById('photo').files[0];
-
-  if (!fileInput) {
-      alert('Please select a photo.');
-      return;
-  }
-
-  const formData = new FormData();
-  formData.append('image', fileInput);
-  formData.append('title', title);
-  formData.append('category', categoryId);
-
-  try {
-      const response = await fetch('http://localhost:5678/api/works', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${token}` },
-          body: formData,
-      });
-
-      if (response.ok) {
-          alert('Work uploaded successfully!');
-      } else if (response.status === 401) {
-          alert('Unauthorized. Please login again.');
-      } else {
-          alert('Failed to upload work.');
-      }
-  } catch (error) {
-      console.error('Error uploading work:', error);
-      alert('An error occurred while uploading the work.');
-  }
 });
 
 function showPreview(event) {
