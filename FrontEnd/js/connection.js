@@ -40,8 +40,8 @@ function updateUIOnLoginState() {
     const loginLink = document.querySelector('.login');
     const logoutLink = document.querySelector('.logout');
     const filterOptions = document.querySelector('.filter-options');
-    const editLink = document.querySelector('.edit-header'); // Optional: Handle edit link visibility
-
+    const editLink = document.querySelector('.edit-header');
+    // const loggedIn = document.querySelector('#logged');
     const isConnected = sessionStorage.getItem('isConnected');
 
     if (isConnected === 'true') {
@@ -49,11 +49,13 @@ function updateUIOnLoginState() {
         if (logoutLink) logoutLink.style.display = 'block'; // Show the logout link
         if (filterOptions) filterOptions.style.display = 'none'; // Hide the filter options
         if (editLink) editLink.style.display = 'inline-block'; // Show edit link if needed
+        // if (loggedIn) editLink.style.display = 'flex'; // Show logged in message
     } else {
         if (loginLink) loginLink.style.display = 'block'; // Show the login link when not logged in
         if (logoutLink) logoutLink.style.display = 'none'; // Hide the logout link
         if (filterOptions) filterOptions.style.display = 'block'; // Show the filter options
         if (editLink) editLink.style.display = 'none'; // Hide edit link if not logged in
+        // if (loggedIn) editLink.style.display = 'none'; // Hide logged in message
     }
 }
 
