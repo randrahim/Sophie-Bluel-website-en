@@ -1,6 +1,19 @@
+// Fetch categories from the API
+async function fetchCategories() {
+  try {
+      const response = await fetch('http://localhost:5678/api/categories');
+      if (!response.ok) {
+          throw new Error('Failed to fetch categories.');
+      }
+      return await response.json();
+  } catch (error) {
+      console.error('Error fetching categories:', error);
+      throw error;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const filterButtons = document.querySelectorAll('.filter-option');
-
   
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
