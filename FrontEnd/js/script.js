@@ -1,38 +1,25 @@
-// Event listener for the 'Edit' button to open the first modal and fetch jobs
+// Event listener for the 'Edit' button to open the first modal and fetch works
 document.getElementById('editButton').addEventListener('click', async () => {
-  const jobs = await fetchJobs();
-  if (jobs) {
-      displayJobsInGallery(jobs);
-      addFilterEventListeners(jobs);
+  const works = await fetchWorks();
+  if (works) {
+      displayWorksInGallery(works);
+      addFilterEventListeners(works);
   }
   openModal('popup'); // Open the first popup window
 });
 
-// Fetch works (galleries) from API
-async function fetchJobs() {
-  try {
-      const response = await fetch('http://localhost:5678/api/works'); // Use Swagger API URL
-      if (!response.ok) {
-          throw new Error('Failed to fetch jobs.');
-      }
-      return await response.json(); // Return the jobs as JSON
-  } catch (error) {
-      console.error('Error:', error);
-  }
-}
-
-// Function to display jobs in the gallery
-function displayJobsInGallery(jobs) {
+// Function to display works in the gallery
+function displayWorksInGallery(works) {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = ''; // Clear existing content
 
-  jobs.forEach(job => {
-      const jobElement = document.createElement('div');
-      jobElement.className = 'job-item';
+  works.forEach(work => {
+      const workElement = document.createElement('div');
+      workElement.className = 'work-item';
 
       const img = document.createElement('img');
-      img.src = job.imageUrl; // Assuming job has an imageUrl property
-      img.alt = job.title; // Assuming job has a title property
+      img.src = work.imageUrl; // Assuming work has an imageUrl property
+      img.alt = work.title; // Assuming work has a title property
 
       const deleteButton = document.createElement('button');
       deleteButton.className = 'delete-button';
@@ -41,31 +28,31 @@ function displayJobsInGallery(jobs) {
     
       // Add event listener to delete button
       deleteButton.addEventListener('click', async () => {
-        await deleteJob(job.id); // Delete the job by its ID
-        // Remove the job element from the DOM
-        jobElement.remove();
+        await deleteWork(work.id); // Delete the work by its ID
+        // Remove the work element from the DOM
+        workElement.remove();
       });
 
-      jobElement.appendChild(img);
-      jobElement.appendChild(deleteButton);
-      gallery.appendChild(jobElement);
+      workElement.appendChild(img);
+      workElement.appendChild(deleteButton);
+      gallery.appendChild(workElement);
   });
 }
 
 // Add event listeners for filtering
-function addFilterEventListeners(jobs) {
+function addFilterEventListeners(works) {
   document.querySelectorAll('.filter-option').forEach(button => {
       button.addEventListener('click', () => {
           const categoryId = button.getAttribute('data-category-id');
-          filterGalleryByCategoryId(jobs, categoryId);
+          filterGalleryByCategoryId(works, categoryId);
       });
   });
 }
 
 // Function to filter gallery by categoryId
-function filterGalleryByCategoryId(jobs, categoryId) {
-  const filteredJobs = categoryId === 'all' ? jobs : jobs.filter(job => job.categoryId == categoryId);
-  displayJobsInGallery(filteredJobs);
+function filterGalleryByCategoryId(works, categoryId) {
+  const filteredWorks = categoryId === 'all' ? works : works.filter(work => work.categoryId == categoryId);
+  displayWorksInGallery(filteredWorks);
 }
 
 // Function to open modals (popup windows)
@@ -122,6 +109,8 @@ async function openSecondModal() {
   document.getElementById('addPhotoModal').style.display = 'none'; // Hide the second modal
 });
 
+
+// To preview the image when gets uploaded
 function showPreview(event) {
   const file = event.target.files[0];
   if (file) {

@@ -1,3 +1,17 @@
+// Fetch works (galleries) from API
+async function fetchWorks() {
+  try {
+      const response = await fetch('http://localhost:5678/api/works'); // Use Swagger API URL
+      if (!response.ok) {
+          throw new Error('Failed to fetch works.');
+      }
+      return await response.json(); // Return the works as JSON
+  } catch (error) {
+      console.error('Error:', error);
+      throw error;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const API_BASE_URL = 'http://localhost:5678/api'; // Base URL for the Swagger API
   const mainGalleryContainer = document.getElementById('main-gallery'); // Main gallery container

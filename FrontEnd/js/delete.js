@@ -1,5 +1,5 @@
-// Function to delete a job
-async function deleteJob(jobId) {
+// Function to delete a work
+async function deleteWork(workId) {
   
   const token = sessionStorage.getItem('Token'); // Get the token for authentication
   if (!token) {
@@ -8,7 +8,7 @@ async function deleteJob(jobId) {
   }
 
   try {
-    const response = await fetch(`http://localhost:5678/api/works/${jobId}`, {
+    const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -17,14 +17,14 @@ async function deleteJob(jobId) {
     });
 
     if (response.ok) {
-      alert('Job deleted successfully!');
+      alert('Work deleted successfully!');
     } else if (response.status === 401) {
       alert('Unauthorized. Please login again.');
     } else {
-      alert('Failed to delete job.');
+      alert('Failed to delete work.');
     }
   } catch (error) {
-    console.error('Error deleting job:', error);
-    alert('An error occurred while deleting the job.');
+    console.error('Error deleting work:', error);
+    alert('An error occurred while deleting the work.');
   }
 }
