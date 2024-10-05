@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalGalleryContainer = document.getElementById('modal-gallery'); // Modal gallery container
   const addPhotoButton = document.getElementById('add-a-photo-btn'); // Add a Photo button
 
+  // Fetch and display existing works in the main gallery and modal gallery
+  fetchAndDisplayWorks();
+
+  // Function to fetch and display works
   async function fetchAndDisplayWorks() {
       try {
           // Fetch works from the Swagger API
@@ -14,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           const works = await response.json();
 
-          // Display works in both the main gallery and the modal gallery
+          // Display works in the main gallery (always visible) and in the modal gallery (if user is logged in)
           displayWorksInGallery(works, mainGalleryContainer);
           displayWorksInGallery(works, modalGalleryContainer);
       } catch (error) {
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
       figure.appendChild(img);
       figure.appendChild(figcaption);
 
-      // Add delete button if required (for modal)
+      // Add delete button only for modal gallery (typically if user is logged in)
       if (galleryContainer.id === 'modal-gallery') {
           const deleteButton = document.createElement('button');
           deleteButton.className = 'delete-button';
@@ -61,6 +65,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       galleryContainer.appendChild(figure);
+  }
+
+  // Event listener for adding a new photo (only available for logged-in users)
+  if (addPhotoButton) {
+      addPhotoButton.addEventListener('click', function () {
+          const photoData = {
+              // Gather the necessary data for the new photo (e.g., title, imageUrl, categoryId)
+              title: 'New Photo Title',
+              imageUrl: 'http://localhost:5678/images/new-photo.png',
+              categoryId: 1 // Example category ID
+          };
+
+          addNewPhoto(photoData); // Call the function to add a new photo
+      });
   }
 
   // Function to handle adding a new photo
@@ -89,19 +107,4 @@ document.addEventListener('DOMContentLoaded', function () {
           console.error('Error adding new photo:', error);
       }
   }
-
-  // Add a click event listener to the "Add a Photo" button
-  addPhotoButton.addEventListener('click', function () {
-      const photoData = {
-          // Gather the necessary data for the new photo (e.g., title, imageUrl, categoryId)
-          title: 'New Photo Title',
-          imageUrl: 'http://localhost:5678/images/new-photo.png',
-          categoryId: 1 // Example category ID
-      };
-
-      addNewPhoto(photoData); // Call the function to add a new photo
-  });
-
-  // Fetch and display existing works when the DOM is loaded
-  fetchAndDisplayWorks();
 });
