@@ -1,6 +1,6 @@
 // Function to delete a job
 async function deleteJob(jobId) {
-  const token = sessionStorage.getItem('token'); // Get the token for authentication
+  const token = sessionStorage.getItem('Token'); // Get the token for authentication
 
   if (!token) {
     alert('You are not logged in.');
