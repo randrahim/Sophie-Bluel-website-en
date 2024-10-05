@@ -20,14 +20,9 @@ async function loginUser(email, password) {
         }
 
         const data = await response.json();
-        // Store login state
-        // console.log('Rand Testing data object', data)
-        // function isData() {
-        //     if (JSON.stringify(data)) {
-        //         return true
-        //     }
-        // }
+
         sessionStorage.setItem('isConnected', 'true'); // Store that the user is logged in
+        sessionStorage.setItem('Token', data.token); // Store the token value
         window.location.href = 'index.html'; // Redirect to the home page after successful login
 
         return data;
