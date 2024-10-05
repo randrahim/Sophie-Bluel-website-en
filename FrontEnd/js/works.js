@@ -15,7 +15,7 @@ async function fetchWorks() {
 document.addEventListener('DOMContentLoaded', function () {
   const API_BASE_URL = 'http://localhost:5678/api'; // Base URL for the Swagger API
   const mainGalleryContainer = document.getElementById('main-gallery'); // Main gallery container
-  const modalGalleryContainer = document.getElementById('modal-gallery'); // Modal gallery container
+  const modalGalleryContainer = document.getElementById('gallery'); // Modal gallery container
   const addPhotoButton = document.getElementById('add-a-photo-btn'); // Add a Photo button
 
   // Fetch and display existing works in the main gallery and modal gallery
