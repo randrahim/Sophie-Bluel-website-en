@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Event listener for adding a new photo (only available for logged-in users)
   if (addPhotoButton) {
       addPhotoButton.addEventListener('click', function () {
-          const photoData = {
+
+        const photoData = {
               // Gather the necessary data for the new photo (e.g., title, imageUrl, categoryId)
               title: 'New Photo Title',
               imageUrl: 'http://localhost:5678/images/new-photo.png',
@@ -97,28 +98,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to handle adding a new photo
   async function addNewPhoto(photoData) {
-      try {
-          const response = await fetch(`${API_BASE_URL}/works`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${sessionStorage.getItem('Token')}` // Assuming you need a token for authentication
-              },
-              body: JSON.stringify(photoData)
-          });
+    const token = sessionStorage.getItem('Token'); // Get the token for authentication
+    if (!token) {
+        alert('You are not logged in.');
+        return;
+    }
 
-          if (!response.ok) {
-              throw new Error('Failed to add new photo');
-          }
+    try {
+        const formData = new FormData();
+        formData.append('title', photoData.title);
+        formData.append('category', photoData.categoryId);
+        
+        // Append the photo file from the form
+        const photoInput = document.getElementById('photo');
+        if (photoInput && photoInput.files.length > 0) {
+            formData.append('image', photoInput.files[0]);
+        } else {
+            throw new Error('No photo selected');
+        }
 
-          const newWork = await response.json();
+        const response = await fetch(`${API_BASE_URL}/works`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}` // Use the token for authentication
+            },
+            body: formData
+        });
 
-          // Add the new work to both the main gallery and modal gallery
-          appendWorkToGallery(newWork, mainGalleryContainer);
-          appendWorkToGallery(newWork, modalGalleryContainer);
+        if (!response.ok) {
+            throw new Error('Failed to add new photo');
+        }
 
-      } catch (error) {
-          console.error('Error adding new photo:', error);
-      }
-  }
+        const newWork = await response.json();
+
+        // Add the new work to both the main gallery and modal gallery
+        appendWorkToGallery(newWork, mainGalleryContainer);
+        appendWorkToGallery(newWork, modalGalleryContainer);
+
+    } catch (error) {
+        console.error('Error adding new photo:', error);
+    }
+}
 });
