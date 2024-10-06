@@ -318,15 +318,6 @@ footer nav ul {
   display: none;
   align-items: center;
 }
-.edit-icon {
-  display: inline-block;
-  margin-bottom: 30px;
-  margin-left: 10px;
-}
-.edit-icon a {
-  text-decoration: none;
-  font-size: 18px;
-}
 
 .modal {
   display: none;
