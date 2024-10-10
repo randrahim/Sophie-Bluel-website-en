@@ -346,9 +346,9 @@ footer nav ul {
   float: left;
 }
 
-.close-button {
+/* .close-button {
   cursor: pointer;
-}
+} */
 
 .add-photo-container {
   display: flex;
